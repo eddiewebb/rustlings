@@ -1,0 +1,11 @@
+tasks:
+  - key: code
+    call: mint/git-clone 1.2.1
+    with:
+      repository: https://github.com/eddiewebb/rustlings.git
+      ref: main
+  - key: hello-rust
+    run: echo "hello" > hello.txt
+  - key: goodby-rust
+    use: [hello-rust]
+    call: 
