@@ -1,3 +1,6 @@
+on:
+  github:
+    push:
 tasks:
   - key: code
     call: mint/git-clone 1.2.1
@@ -5,7 +8,8 @@ tasks:
       repository: https://github.com/eddiewebb/rustlings.git
       ref: main
   - key: hello-rust
-    run: echo "hello" > hello.txt
-  - key: goodby-rust
-    use: [hello-rust]
-    call: 
+    run: |
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  - key: exercise-rust
+    use: [hello-rust,code]
+    run: cargo test
